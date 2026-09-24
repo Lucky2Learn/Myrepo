@@ -1,0 +1,301 @@
+/* ==========================================================================
+   MTI Theme — premium design tokens + components
+   Fonts: Instrument Serif (display), Geist (UI), Geist Mono (data)
+   Themes: light by default; dark via prefers-color-scheme or [data-theme="dark"].
+   Force light with [data-theme="light"].
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap");
+
+/* ---------- 1. Tokens (light) ---------- */
+:root {
+  /* Brand */
+  --mti-ink: #121A2E;          /* Oxford ink: primary brand */
+  --mti-gold: #A8823F;         /* Champagne: signature accent */
+  --mti-gold-soft: #F3EBDC;
+
+  /* Surfaces */
+  --bg: #F5F6F8;
+  --surface: #FFFFFF;
+  --surface-2: #F0F2F5;
+  --surface-sunken: #E9ECF1;
+  --border: #E1E4EA;
+  --border-strong: #CBD0D9;
+
+  /* Text */
+  --text: #121A2E;
+  --text-2: #4A5367;
+  --text-3: #7A8396;
+  --text-inverse: #FFFFFF;
+
+  /* Actions */
+  --primary: var(--mti-ink);
+  --primary-hover: #1F2B47;
+  --on-primary: #FFFFFF;
+  --accent: var(--mti-gold);
+  --accent-soft: var(--mti-gold-soft);
+  --on-accent: #1A1204;
+  --focus: #C49A52;
+
+  /* Semantic */
+  --success: #1E7A52;  --success-soft: #E3F2EA;
+  --warning: #A86408;  --warning-soft: #FBEEDB;
+  --danger:  #B4322E;  --danger-soft:  #F9E4E2;
+  --info:    #2F5BB7;  --info-soft:    #E4ECFA;
+
+  /* Data viz series */
+  --chart-1: #121A2E;
+  --chart-2: #A8823F;
+  --chart-3: #5C7CBA;
+  --chart-grid: #E6E9EE;
+
+  /* Type */
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  --fs-xs: 0.75rem;   /* 12 */
+  --fs-sm: 0.8125rem; /* 13 */
+  --fs-md: 0.875rem;  /* 14 */
+  --fs-lg: 1rem;      /* 16 */
+  --fs-xl: 1.25rem;   /* 20 */
+  --fs-2xl: 1.75rem;  /* 28 */
+  --fs-3xl: 2.5rem;   /* 40 */
+  --fs-4xl: 3.5rem;   /* 56 */
+
+  /* Space (4px grid) */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px;
+
+  /* Shape */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-pill: 999px;
+
+  /* Elevation — low, cool-tinted shadows */
+  --shadow-1: 0 1px 2px rgba(18, 26, 46, .06), 0 0 0 1px rgba(18, 26, 46, .04);
+  --shadow-2: 0 4px 16px -4px rgba(18, 26, 46, .10), 0 0 0 1px rgba(18, 26, 46, .05);
+  --shadow-3: 0 24px 48px -16px rgba(18, 26, 46, .22), 0 0 0 1px rgba(18, 26, 46, .06);
+
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur: 160ms;
+}
+
+/* ---------- 2. Tokens (dark) ---------- */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0A0D15;
+    --surface: #111623;
+    --surface-2: #171D2C;
+    --surface-sunken: #0D111B;
+    --border: #232A3B;
+    --border-strong: #323B50;
+    --text: #EDEFF4;
+    --text-2: #A9B0C0;
+    --text-3: #737C90;
+    --text-inverse: #0A0D15;
+    --primary: #D8B878;
+    --primary-hover: #E4C98F;
+    --on-primary: #17110A;
+    --accent: #D8B878;
+    --accent-soft: #2A2416;
+    --on-accent: #17110A;
+    --focus: #D8B878;
+    --success: #4CC38A; --success-soft: #132A21;
+    --warning: #E6A23C; --warning-soft: #2E2312;
+    --danger:  #EF6B65; --danger-soft:  #33171A;
+    --info:    #7FA3F0; --info-soft:    #162340;
+    --chart-1: #D8B878;
+    --chart-2: #7FA3F0;
+    --chart-3: #6E7A94;
+    --chart-grid: #1E2536;
+    --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.03);
+    --shadow-2: 0 8px 24px -8px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);
+    --shadow-3: 0 24px 60px -16px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.05);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0A0D15;
+  --surface: #111623;
+  --surface-2: #171D2C;
+  --surface-sunken: #0D111B;
+  --border: #232A3B;
+  --border-strong: #323B50;
+  --text: #EDEFF4;
+  --text-2: #A9B0C0;
+  --text-3: #737C90;
+  --text-inverse: #0A0D15;
+  --primary: #D8B878;
+  --primary-hover: #E4C98F;
+  --on-primary: #17110A;
+  --accent: #D8B878;
+  --accent-soft: #2A2416;
+  --on-accent: #17110A;
+  --focus: #D8B878;
+  --success: #4CC38A; --success-soft: #132A21;
+  --warning: #E6A23C; --warning-soft: #2E2312;
+  --danger:  #EF6B65; --danger-soft:  #33171A;
+  --info:    #7FA3F0; --info-soft:    #162340;
+  --chart-1: #D8B878;
+  --chart-2: #7FA3F0;
+  --chart-3: #6E7A94;
+  --chart-grid: #1E2536;
+  --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.03);
+  --shadow-2: 0 8px 24px -8px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);
+  --shadow-3: 0 24px 60px -16px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.05);
+}
+
+/* ---------- 3. Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  font-feature-settings: "ss01", "cv11";
+}
+h1, h2, h3, h4 { margin: 0; color: var(--text); text-wrap: balance; letter-spacing: -0.015em; }
+.mti-display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; line-height: 1.05; }
+.mti-h1 { font-size: var(--fs-3xl); font-family: var(--font-display); font-weight: 400; line-height: 1.1; }
+.mti-h2 { font-size: var(--fs-xl); font-weight: 600; }
+.mti-h3 { font-size: var(--fs-lg); font-weight: 600; }
+.mti-eyebrow {
+  font-size: var(--fs-xs); font-weight: 600; text-transform: uppercase;
+  letter-spacing: .09em; color: var(--text-3);
+}
+.mti-muted { color: var(--text-2); }
+.mti-num, .mti-mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+a { color: inherit; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: var(--radius-sm); }
+::selection { background: var(--accent-soft); color: var(--text); }
+
+/* ---------- 4. Buttons ---------- */
+.mti-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
+  height: 36px; padding: 0 var(--sp-4);
+  border: 1px solid transparent; border-radius: var(--radius-md);
+  font: 500 var(--fs-md)/1 var(--font-sans);
+  cursor: pointer; white-space: nowrap;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease), transform var(--dur) var(--ease);
+}
+.mti-btn:active { transform: translateY(1px); }
+.mti-btn--primary {
+  background: var(--primary); color: var(--on-primary);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), 0 1px 2px rgba(0,0,0,.18);
+}
+.mti-btn--primary:hover { background: var(--primary-hover); }
+.mti-btn--secondary { background: var(--surface); color: var(--text); border-color: var(--border-strong); box-shadow: var(--shadow-1); }
+.mti-btn--secondary:hover { background: var(--surface-2); }
+.mti-btn--ghost { background: transparent; color: var(--text-2); }
+.mti-btn--ghost:hover { background: var(--surface-2); color: var(--text); }
+.mti-btn--accent { background: var(--accent); color: var(--on-accent); }
+.mti-btn--danger { background: var(--danger); color: #fff; }
+.mti-btn--sm { height: 30px; padding: 0 var(--sp-3); font-size: var(--fs-sm); border-radius: var(--radius-sm); }
+.mti-btn--lg { height: 44px; padding: 0 var(--sp-6); font-size: var(--fs-lg); }
+.mti-btn[disabled] { opacity: .45; cursor: not-allowed; }
+
+/* ---------- 5. Forms ---------- */
+.mti-field { display: grid; gap: var(--sp-2); }
+.mti-label { font-size: var(--fs-sm); font-weight: 500; color: var(--text); }
+.mti-hint { font-size: var(--fs-xs); color: var(--text-3); }
+.mti-input, .mti-select {
+  width: 100%; height: 38px; padding: 0 var(--sp-3);
+  background: var(--surface); color: var(--text);
+  border: 1px solid var(--border-strong); border-radius: var(--radius-md);
+  font: 400 var(--fs-md) var(--font-sans);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.mti-input::placeholder { color: var(--text-3); }
+.mti-input:hover, .mti-select:hover { border-color: var(--text-3); }
+.mti-input:focus, .mti-select:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+.mti-input[aria-invalid="true"] { border-color: var(--danger); }
+.mti-switch { position: relative; width: 36px; height: 20px; appearance: none; margin: 0;
+  background: var(--border-strong); border-radius: var(--radius-pill); cursor: pointer;
+  transition: background var(--dur) var(--ease); }
+.mti-switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 16px; height: 16px;
+  background: #fff; border-radius: 50%; box-shadow: 0 1px 2px rgba(0,0,0,.25);
+  transition: transform var(--dur) var(--ease); }
+.mti-switch:checked { background: var(--primary); }
+.mti-switch:checked::after { transform: translateX(16px); }
+
+/* ---------- 6. Surfaces ---------- */
+.mti-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-1);
+}
+.mti-card__head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  padding: var(--sp-4) var(--sp-5); border-bottom: 1px solid var(--border); }
+.mti-card__body { padding: var(--sp-5); }
+.mti-divider { height: 1px; background: var(--border); border: 0; margin: 0; }
+
+/* ---------- 7. Badges / status ---------- */
+.mti-badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 22px; padding: 0 var(--sp-2); border-radius: var(--radius-pill);
+  font-size: var(--fs-xs); font-weight: 500; white-space: nowrap;
+  background: var(--surface-2); color: var(--text-2);
+}
+.mti-badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.mti-badge--success { background: var(--success-soft); color: var(--success); }
+.mti-badge--warning { background: var(--warning-soft); color: var(--warning); }
+.mti-badge--danger  { background: var(--danger-soft);  color: var(--danger); }
+.mti-badge--info    { background: var(--info-soft);    color: var(--info); }
+.mti-badge--accent  { background: var(--accent-soft);  color: var(--accent); }
+.mti-badge--plain::before { display: none; }
+
+/* ---------- 8. Tables ---------- */
+.mti-table-wrap { overflow-x: auto; }
+.mti-table { width: 100%; border-collapse: collapse; font-size: var(--fs-md); }
+.mti-table th {
+  text-align: left; font-size: var(--fs-xs); font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--text-3);
+  padding: var(--sp-3) var(--sp-5); border-bottom: 1px solid var(--border); background: var(--surface-2);
+}
+.mti-table td { padding: var(--sp-3) var(--sp-5); border-bottom: 1px solid var(--border); white-space: nowrap; }
+.mti-table tr:last-child td { border-bottom: 0; }
+.mti-table tbody tr { transition: background var(--dur) var(--ease); }
+.mti-table tbody tr:hover { background: var(--surface-2); }
+.mti-table .is-num { text-align: right; font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+/* ---------- 9. Navigation ---------- */
+.mti-nav { display: grid; gap: 2px; }
+.mti-nav__item {
+  display: flex; align-items: center; gap: var(--sp-3);
+  height: 34px; padding: 0 var(--sp-3); border-radius: var(--radius-sm);
+  color: var(--text-2); text-decoration: none; font-weight: 500;
+  transition: background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.mti-nav__item:hover { background: var(--surface-2); color: var(--text); }
+.mti-nav__item[aria-current="page"] {
+  background: var(--surface); color: var(--text); box-shadow: var(--shadow-1);
+}
+.mti-nav__item[aria-current="page"] svg { color: var(--accent); }
+.mti-tabs { display: flex; gap: var(--sp-1); padding: 3px; background: var(--surface-sunken);
+  border-radius: var(--radius-md); width: fit-content; }
+.mti-tab { height: 28px; padding: 0 var(--sp-3); border: 0; border-radius: 7px; background: transparent;
+  color: var(--text-2); font: 500 var(--fs-sm) var(--font-sans); cursor: pointer; }
+.mti-tab[aria-selected="true"] { background: var(--surface); color: var(--text); box-shadow: var(--shadow-1); }
+
+/* ---------- 10. Misc ---------- */
+.mti-avatar { display: inline-grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent); font-weight: 600; font-size: var(--fs-sm); flex: none; }
+.mti-kbd { font-family: var(--font-mono); font-size: 11px; padding: 2px 6px; border-radius: 5px;
+  border: 1px solid var(--border-strong); border-bottom-width: 2px; color: var(--text-2); background: var(--surface); }
+.mti-progress { height: 6px; border-radius: var(--radius-pill); background: var(--surface-sunken); overflow: hidden; }
+.mti-progress > span { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
+.mti-toast { display: flex; gap: var(--sp-3); align-items: flex-start; padding: var(--sp-4);
+  background: var(--mti-ink); color: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-3); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}
