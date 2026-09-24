@@ -1,6 +1,7 @@
 /* ==========================================================================
    MTI Theme — premium design tokens + components
-   Fonts: Instrument Serif (display), Geist (UI), Geist Mono (data)
+   Default look "Aurum": Instrument Serif (display), Geist (UI), Geist Mono (data).
+   Other looks live in mti-looks.css and switch via <html data-look="...">.
    Themes: light by default; dark via prefers-color-scheme or [data-theme="dark"].
    Force light with [data-theme="light"].
    ========================================================================== */
@@ -78,6 +79,20 @@
   --shadow-2: 0 4px 16px -4px rgba(18, 26, 46, .10), 0 0 0 1px rgba(18, 26, 46, .05);
   --shadow-3: 0 24px 48px -16px rgba(18, 26, 46, .22), 0 0 0 1px rgba(18, 26, 46, .06);
 
+  /* App chrome */
+  --sidebar-bg: #0F1629;
+  --sidebar-text: #E9ECF2;
+  --sidebar-text-2: #8B94A8;
+  --sidebar-active: #1E2842;
+  --sidebar-border: #1E2842;
+  --hero-bg: linear-gradient(135deg, #0F1629 0%, #1E2A4A 100%);
+  --hero-text: #FFFFFF;
+  --hero-text-2: #B9C0D0;
+  --hero-accent: #D8B878;
+
+  --display-weight: 400;
+  --display-tracking: -0.01em;
+
   --ease: cubic-bezier(.2, .7, .2, 1);
   --dur: 160ms;
 }
@@ -111,6 +126,15 @@
     --chart-2: #7FA3F0;
     --chart-3: #6E7A94;
     --chart-grid: #1E2536;
+  --sidebar-bg: #0D111B;
+  --sidebar-text: #EDEFF4;
+  --sidebar-text-2: #7D869A;
+  --sidebar-active: #1A2030;
+  --sidebar-border: #1C2232;
+  --hero-bg: linear-gradient(135deg, #1A1F2E 0%, #241F14 100%);
+  --hero-text: #F5EEDD;
+  --hero-text-2: #B8AE98;
+  --hero-accent: #D8B878;
     --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.03);
     --shadow-2: 0 8px 24px -8px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);
     --shadow-3: 0 24px 60px -16px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.05);
@@ -143,6 +167,15 @@
   --chart-2: #7FA3F0;
   --chart-3: #6E7A94;
   --chart-grid: #1E2536;
+  --sidebar-bg: #0D111B;
+  --sidebar-text: #EDEFF4;
+  --sidebar-text-2: #7D869A;
+  --sidebar-active: #1A2030;
+  --sidebar-border: #1C2232;
+  --hero-bg: linear-gradient(135deg, #1A1F2E 0%, #241F14 100%);
+  --hero-text: #F5EEDD;
+  --hero-text-2: #B8AE98;
+  --hero-accent: #D8B878;
   --shadow-1: 0 1px 2px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.03);
   --shadow-2: 0 8px 24px -8px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.04);
   --shadow-3: 0 24px 60px -16px rgba(0,0,0,.75), 0 0 0 1px rgba(255,255,255,.05);
@@ -161,8 +194,8 @@ body {
   font-feature-settings: "ss01", "cv11";
 }
 h1, h2, h3, h4 { margin: 0; color: var(--text); text-wrap: balance; letter-spacing: -0.015em; }
-.mti-display { font-family: var(--font-display); font-weight: 400; letter-spacing: -0.01em; line-height: 1.05; }
-.mti-h1 { font-size: var(--fs-3xl); font-family: var(--font-display); font-weight: 400; line-height: 1.1; }
+.mti-display { font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); line-height: 1.05; }
+.mti-h1 { font-size: var(--fs-3xl); font-family: var(--font-display); font-weight: var(--display-weight); letter-spacing: var(--display-tracking); line-height: 1.1; }
 .mti-h2 { font-size: var(--fs-xl); font-weight: 600; }
 .mti-h3 { font-size: var(--fs-lg); font-weight: 600; }
 .mti-eyebrow {
@@ -279,7 +312,10 @@ a { color: inherit; text-decoration-color: var(--accent); text-underline-offset:
 .mti-nav__item[aria-current="page"] {
   background: var(--surface); color: var(--text); box-shadow: var(--shadow-1);
 }
-.mti-nav__item[aria-current="page"] svg { color: var(--accent); }
+.mti-sidebar .mti-nav__item { color: var(--sidebar-text-2); }
+.mti-sidebar .mti-nav__item:hover { background: var(--sidebar-active); color: var(--sidebar-text); }
+.mti-sidebar .mti-nav__item[aria-current="page"] { background: var(--sidebar-active); color: var(--sidebar-text); box-shadow: none; }
+.mti-nav__item[aria-current="page"] svg { color: var(--hero-accent); }
 .mti-tabs { display: flex; gap: var(--sp-1); padding: 3px; background: var(--surface-sunken);
   border-radius: var(--radius-md); width: fit-content; }
 .mti-tab { height: 28px; padding: 0 var(--sp-3); border: 0; border-radius: 7px; background: transparent;
@@ -294,7 +330,7 @@ a { color: inherit; text-decoration-color: var(--accent); text-underline-offset:
 .mti-progress { height: 6px; border-radius: var(--radius-pill); background: var(--surface-sunken); overflow: hidden; }
 .mti-progress > span { display: block; height: 100%; border-radius: inherit; background: var(--accent); }
 .mti-toast { display: flex; gap: var(--sp-3); align-items: flex-start; padding: var(--sp-4);
-  background: var(--mti-ink); color: #fff; border-radius: var(--radius-lg); box-shadow: var(--shadow-3); }
+  background: var(--sidebar-bg); color: var(--sidebar-text); border-radius: var(--radius-lg); box-shadow: var(--shadow-3); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; }

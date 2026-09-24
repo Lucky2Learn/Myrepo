@@ -3,30 +3,57 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>MTI Premium Theme</title>
+<title>MTI Theme Gallery</title>
 <link rel="stylesheet" href="theme/mti-theme.css">
+<link rel="stylesheet" href="theme/mti-looks.css">
 <style>
-  body { padding-inline: 16px; }
-  .shell { max-width: 1280px; margin: 0 auto; padding-block: 24px 64px;
-    display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 32px; }
-  .side { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 24px); align-self: start;
-    display: grid; gap: 28px; }
-  .brand { display: flex; align-items: center; gap: 10px; }
-  .brand__mark { width: 30px; height: 30px; border-radius: 8px; background: var(--mti-ink);
-    display: grid; place-items: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.08); }
-  .brand__name { font-family: var(--font-display); font-size: 26px; line-height: 1; }
-  .brand__name em { color: var(--accent); font-style: italic; }
-  .side__foot { display: grid; gap: 10px; padding: 14px; border: 1px solid var(--border);
-    border-radius: var(--radius-lg); background: var(--surface); }
-  .main { display: grid; gap: 28px; min-width: 0; }
+  body { padding-inline: 0; background: var(--bg); transition: background var(--dur) var(--ease); }
+  .picker { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20;
+    background: var(--surface); border-bottom: 1px solid var(--border);
+    padding: 12px 16px; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .picker__label { font-size: var(--fs-xs); font-weight: 600; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--text-3); margin-right: 2px; }
+  .look-btn { border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-2);
+    height: 30px; padding: 0 12px; border-radius: var(--radius-pill); font: 500 12.5px var(--font-sans);
+    cursor: pointer; display: flex; align-items: center; gap: 7px; transition: all var(--dur) var(--ease); }
+  .look-btn:hover { border-color: var(--text-3); color: var(--text); }
+  .look-btn[aria-pressed="true"] { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+  .look-btn i { width: 8px; height: 8px; border-radius: 50%; background: var(--dot); flex: none; }
+  .picker__end { margin-left: auto; }
+  .shell { max-width: 1280px; margin: 0 auto; padding: 16px 16px 64px;
+    display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 24px; }
+  .side { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 66px); align-self: start;
+    display: grid; gap: 24px; background: var(--sidebar-bg); border-radius: var(--radius-lg);
+    padding: 18px 14px; box-shadow: var(--shadow-1); transition: background var(--dur) var(--ease); }
+  .brand { display: flex; align-items: center; gap: 10px; padding: 0 4px; }
+  .brand__mark { width: 30px; height: 30px; border-radius: 8px; background: var(--hero-accent);
+    display: grid; place-items: center; flex: none; }
+  .brand__name { font-family: var(--font-display); font-weight: var(--display-weight); font-size: 22px; line-height: 1; color: var(--sidebar-text); }
+  .brand__name em { color: var(--hero-accent); font-style: italic; }
+  .side .mti-nav__item { color: var(--sidebar-text-2); }
+  .side .mti-nav__item:hover { background: var(--sidebar-active); color: var(--sidebar-text); }
+  .side .mti-nav__item[aria-current="page"] { background: var(--sidebar-active); color: var(--sidebar-text); box-shadow: none; }
+  .side .mti-nav__item[aria-current="page"] svg { color: var(--hero-accent); }
+  .side__foot { display: grid; gap: 10px; padding: 14px; border: 1px solid var(--sidebar-border);
+    border-radius: var(--radius-md); background: var(--sidebar-active); }
+  .side__foot .mti-eyebrow, .side__foot .mti-muted { color: var(--sidebar-text-2); }
+  .side__foot .mti-num { color: var(--sidebar-text); }
+  .main { display: grid; gap: 24px; min-width: 0; }
+  .hero { border-radius: var(--radius-lg); padding: 28px 32px; background: var(--hero-bg);
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+    box-shadow: var(--shadow-2); transition: background var(--dur) var(--ease); }
+  .hero__eyebrow { color: var(--hero-text-2); }
+  .hero h1 { color: var(--hero-text); }
+  .hero h1 em { color: var(--hero-accent); font-style: italic; }
+  .hero .mti-btn--primary { background: var(--hero-accent); color: var(--on-accent); }
+  .hero .mti-btn--secondary { background: transparent; color: var(--hero-text); border-color: rgba(255,255,255,.28); box-shadow: none; }
+  .hero .mti-btn--secondary:hover { background: rgba(255,255,255,.08); }
   .topbar { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
   .search { position: relative; flex: 1 1 260px; max-width: 420px; }
   .search .mti-input { padding-left: 36px; padding-right: 48px; }
   .search svg { position: absolute; left: 12px; top: 11px; color: var(--text-3); }
   .search .mti-kbd { position: absolute; right: 10px; top: 9px; }
   .topbar__end { margin-left: auto; display: flex; gap: 8px; align-items: center; }
-  .hello { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-  .hello h1 em { color: var(--accent); }
   .kpis { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 16px; }
   .kpi { padding: 18px 20px; display: grid; gap: 6px; }
   .kpi__value { font-family: var(--font-display); font-size: 40px; line-height: 1; letter-spacing: -.01em; }
@@ -68,20 +95,33 @@
     .side { position: static; }
     .side .mti-nav { grid-auto-flow: column; overflow-x: auto; }
     .side__foot { display: none; }
+    .hero { padding: 22px; }
   }
   @media (max-width: 480px) {
     .kpis { grid-template-columns: minmax(0,1fr); }
     .kpi__value { font-size: 34px; }
     .swatches { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .picker__end { margin-left: 0; width: 100%; }
   }
 </style>
 </head>
 <body>
+<div class="picker" role="radiogroup" aria-label="Theme look">
+  <span class="picker__label">Look</span>
+  <button class="look-btn" data-set-look="aurum" aria-pressed="true" style="--dot:#A8823F" type="button"><i></i>Aurum</button>
+  <button class="look-btn" data-set-look="ledger" aria-pressed="false" style="--dot:#2452E8" type="button"><i></i>Ledger</button>
+  <button class="look-btn" data-set-look="verdigris" aria-pressed="false" style="--dot:#A6702E" type="button"><i></i>Verdigris</button>
+  <button class="look-btn" data-set-look="nightshade" aria-pressed="false" style="--dot:#7DD8E8" type="button"><i></i>Nightshade</button>
+  <button class="look-btn" data-set-look="rosewood" aria-pressed="false" style="--dot:#A85A5F" type="button"><i></i>Rosewood</button>
+  <div class="picker__end">
+    <button class="mti-btn mti-btn--ghost mti-btn--sm" id="themeToggle" type="button">Dark mode</button>
+  </div>
+</div>
 <div class="shell">
   <aside class="side">
     <div class="brand">
       <span class="brand__mark" aria-hidden="true">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 13V3l6 6 6-6v10" stroke="#D8B878" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 13V3l6 6 6-6v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:var(--on-accent)"/></svg>
       </span>
       <span class="brand__name">MTI <em>Console</em></span>
     </div>
@@ -107,14 +147,13 @@
         <span class="mti-kbd">⌘K</span>
       </label>
       <div class="topbar__end">
-        <button class="mti-btn mti-btn--ghost mti-btn--sm" id="themeToggle" type="button">Switch theme</button>
         <span class="mti-avatar" title="Signed in">AR</span>
       </div>
     </div>
 
-    <section class="hello">
+    <section class="hero">
       <div style="display:grid;gap:6px">
-        <span class="mti-eyebrow">Overview · Q3 FY26</span>
+        <span class="mti-eyebrow hero__eyebrow">Overview · Q3 FY26</span>
         <h1 class="mti-h1">Good morning. Revenue is <em>up 12.4%</em> this quarter.</h1>
       </div>
       <div class="row">
@@ -189,14 +228,14 @@
 
     <section class="kit" aria-labelledby="kit-title">
       <div class="kit__head">
-        <span class="mti-eyebrow">Theme kit</span>
-        <h2 id="kit-title" class="mti-h1" style="font-size:var(--fs-2xl)">Oxford ink and champagne</h2>
-        <p class="mti-muted" style="margin:0;max-width:62ch">Deep ink carries the brand in light mode. Champagne takes over as the primary action color in dark mode, so the product feels the same in both themes. Every value below is a CSS custom property in <code class="mti-mono">theme/mti-theme.css</code>.</p>
+        <span class="mti-eyebrow" id="kitEyebrow">Theme kit · Aurum</span>
+        <h2 id="kit-title" class="mti-h1" style="font-size:var(--fs-2xl)"><span id="kitFonts">Instrument Serif · Geist · Geist Mono</span></h2>
+        <p class="mti-muted" style="margin:0;max-width:62ch" id="kitDesc">Oxford ink carries the brand in light mode; champagne takes over as the primary action color in dark mode, so the product feels the same in both. Every value below is a CSS custom property, swapped by <code class="mti-mono">[data-look]</code> in <code class="mti-mono">theme/mti-looks.css</code>.</p>
       </div>
       <div class="mti-card mti-card__body">
         <div class="swatches">
-          <div class="sw"><div class="sw__chip" style="background:var(--mti-ink)"></div><div><b>Oxford ink</b><span>--mti-ink</span></div></div>
-          <div class="sw"><div class="sw__chip" style="background:var(--accent)"></div><div><b>Champagne</b><span>--accent</span></div></div>
+          <div class="sw"><div class="sw__chip" style="background:var(--primary)"></div><div><b>Primary</b><span>--primary</span></div></div>
+          <div class="sw"><div class="sw__chip" style="background:var(--accent)"></div><div><b>Accent</b><span>--accent</span></div></div>
           <div class="sw"><div class="sw__chip" style="background:var(--bg)"></div><div><b>Canvas</b><span>--bg</span></div></div>
           <div class="sw"><div class="sw__chip" style="background:var(--surface)"></div><div><b>Surface</b><span>--surface</span></div></div>
           <div class="sw"><div class="sw__chip" style="background:var(--success)"></div><div><b>Success</b><span>--success</span></div></div>
@@ -255,6 +294,40 @@
   function label() { btn.textContent = isDark() ? 'Light mode' : 'Dark mode'; }
   btn.addEventListener('click', function () { root.setAttribute('data-theme', isDark() ? 'light' : 'dark'); label(); });
   label();
+
+  var LOOKS = {
+    aurum:      { name: 'Aurum',      fonts: 'Instrument Serif · Geist · Geist Mono',
+                  desc: 'Oxford ink carries the brand in light mode; champagne takes over as the primary action color in dark mode, so the product feels the same in both.' },
+    ledger:     { name: 'Ledger',     fonts: 'Archivo · IBM Plex Sans · IBM Plex Mono',
+                  desc: 'Graphite neutrals, sharp corners and a single cobalt accent — built for a console whose job is precise numbers, not mood.' },
+    verdigris:  { name: 'Verdigris',  fonts: 'Fraunces · Work Sans · Space Mono',
+                  desc: 'Deep teal ink on warm stone with a brass accent — a private-bank ledger, editorial but restrained.' },
+    nightshade: { name: 'Nightshade', fonts: 'Bricolage Grotesque · Manrope · JetBrains Mono',
+                  desc: 'Dark-first indigo with an ice-blue accent — built to be read at night by someone monitoring a system.' },
+    rosewood:   { name: 'Rosewood',   fonts: 'Newsreader · Karla · Space Mono',
+                  desc: 'Warm charcoal with a dusty rose accent — quiet and editorial, a softer register than the others.' }
+  };
+  var looksBar = document.querySelector('.picker');
+  var kitEyebrow = document.getElementById('kitEyebrow');
+  var kitFonts = document.getElementById('kitFonts');
+  var kitDesc = document.getElementById('kitDesc');
+  function setLook(id, save) {
+    var l = LOOKS[id] || LOOKS.aurum;
+    root.setAttribute('data-look', id);
+    looksBar.querySelectorAll('.look-btn').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.setLook === id));
+    });
+    kitEyebrow.textContent = 'Theme kit · ' + l.name;
+    kitFonts.textContent = l.fonts;
+    kitDesc.innerHTML = l.desc + ' Every value below is a CSS custom property, swapped by <code class="mti-mono">[data-look]</code> in <code class="mti-mono">theme/mti-looks.css</code>.';
+    if (save) { try { localStorage.setItem('mti-look', id); } catch (e) {} }
+  }
+  looksBar.querySelectorAll('.look-btn').forEach(function (b) {
+    b.addEventListener('click', function () { setLook(b.dataset.setLook, true); });
+  });
+  var saved = 'aurum';
+  try { saved = localStorage.getItem('mti-look') || 'aurum'; } catch (e) {}
+  setLook(saved, false);
 
   var NS = 'http://www.w3.org/2000/svg';
   function el(tag, attrs, parent) {

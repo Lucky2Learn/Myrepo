@@ -1,0 +1,369 @@
+/* ==========================================================================
+   MTI Looks — five complete visual directions on top of mti-theme.css
+   Switch with <html data-look="aurum|ledger|verdigris|nightshade|rosewood">.
+   Each look only overrides tokens; every component class stays the same.
+   Fonts are loaded together below; the browser fetches a family's files
+   only once something on screen is actually set in it.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Karla:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Newsreader:ital,opsz@0,6..72;1,6..72&family=Space+Mono:wght@400;700&family=Work+Sans:wght@400;500;600&display=swap");
+
+/* --------------------------------------------------------------------------
+   Aurum — Oxford ink + champagne (the default look; named here for the
+   switcher and left as a no-op alias of the base :root tokens)
+   -------------------------------------------------------------------------- */
+[data-look="aurum"] { --look-name: "Aurum"; }
+
+/* --------------------------------------------------------------------------
+   Ledger — graphite console with a cobalt working accent. Dense, exact,
+   built for a product whose job is numbers, not mood.
+   -------------------------------------------------------------------------- */
+[data-look="ledger"] {
+  --font-display: "Archivo", "Arial Narrow", sans-serif;
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", monospace;
+  --display-weight: 700;
+  --display-tracking: -0.02em;
+
+  --bg: #F1F2F4;
+  --surface: #FFFFFF;
+  --surface-2: #E7E9ED;
+  --surface-sunken: #DCDFE5;
+  --border: #D6D9DF;
+  --border-strong: #B7BCC6;
+
+  --text: #1B1F27;
+  --text-2: #4C5262;
+  --text-3: #7B8191;
+  --text-inverse: #FFFFFF;
+
+  --primary: #1B1F27;
+  --primary-hover: #2B3140;
+  --on-primary: #FFFFFF;
+  --accent: #2452E8;
+  --accent-soft: #DFE6FC;
+  --on-accent: #FFFFFF;
+  --focus: #2452E8;
+
+  --success: #157A4D; --success-soft: #DCF0E5;
+  --warning: #9A5B00; --warning-soft: #FBEBD6;
+  --danger:  #C22A2A; --danger-soft:  #FBDEDE;
+  --info:    #2452E8; --info-soft:    #DFE6FC;
+
+  --chart-1: #1B1F27;
+  --chart-2: #2452E8;
+  --chart-3: #9AA1B0;
+  --chart-grid: #DCDFE5;
+
+  --radius-sm: 3px; --radius-md: 4px; --radius-lg: 6px;
+  --shadow-1: 0 0 0 1px rgba(27,31,39,.08);
+  --shadow-2: 0 2px 8px rgba(27,31,39,.10), 0 0 0 1px rgba(27,31,39,.08);
+  --shadow-3: 0 16px 32px -8px rgba(27,31,39,.22), 0 0 0 1px rgba(27,31,39,.10);
+
+  --sidebar-bg: #1B1F27;
+  --sidebar-text: #F1F2F4;
+  --sidebar-text-2: #8B92A3;
+  --sidebar-active: #2B3140;
+  --sidebar-border: #2B3140;
+  --hero-bg: #1B1F27;
+  --hero-text: #FFFFFF;
+  --hero-text-2: #ABB1C0;
+  --hero-accent: #6D93FF;
+}
+@media (prefers-color-scheme: dark) {
+  [data-look="ledger"]:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0E1015; --surface: #15181F; --surface-2: #1B1F27; --surface-sunken: #0B0D11;
+    --border: #262B35; --border-strong: #363D4A;
+    --text: #EEF0F4; --text-2: #A0A6B4; --text-3: #6E7482; --text-inverse: #0E1015;
+    --primary: #6D93FF; --primary-hover: #85A4FF; --on-primary: #0B1224;
+    --accent: #6D93FF; --accent-soft: #17203A; --on-accent: #0B1224; --focus: #6D93FF;
+    --success: #3FBE85; --success-soft: #10281F;
+    --warning: #E3A73B; --warning-soft: #2C2110;
+    --danger:  #F0665F; --danger-soft:  #301617;
+    --info:    #6D93FF; --info-soft:    #17203A;
+    --chart-1: #EEF0F4; --chart-2: #6D93FF; --chart-3: #565D6D; --chart-grid: #1E222B;
+    --sidebar-bg: #0B0D11; --sidebar-text: #EEF0F4; --sidebar-text-2: #7B8191;
+    --sidebar-active: #1B1F27; --sidebar-border: #1E222B;
+    --hero-bg: #0B0D11; --hero-text: #EEF0F4; --hero-text-2: #9CA3B3; --hero-accent: #6D93FF;
+  }
+}
+[data-look="ledger"][data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0E1015; --surface: #15181F; --surface-2: #1B1F27; --surface-sunken: #0B0D11;
+  --border: #262B35; --border-strong: #363D4A;
+  --text: #EEF0F4; --text-2: #A0A6B4; --text-3: #6E7482; --text-inverse: #0E1015;
+  --primary: #6D93FF; --primary-hover: #85A4FF; --on-primary: #0B1224;
+  --accent: #6D93FF; --accent-soft: #17203A; --on-accent: #0B1224; --focus: #6D93FF;
+  --success: #3FBE85; --success-soft: #10281F;
+  --warning: #E3A73B; --warning-soft: #2C2110;
+  --danger:  #F0665F; --danger-soft:  #301617;
+  --info:    #6D93FF; --info-soft:    #17203A;
+  --chart-1: #EEF0F4; --chart-2: #6D93FF; --chart-3: #565D6D; --chart-grid: #1E222B;
+  --sidebar-bg: #0B0D11; --sidebar-text: #EEF0F4; --sidebar-text-2: #7B8191;
+  --sidebar-active: #1B1F27; --sidebar-border: #1E222B;
+  --hero-bg: #0B0D11; --hero-text: #EEF0F4; --hero-text-2: #9CA3B3; --hero-accent: #6D93FF;
+}
+
+/* --------------------------------------------------------------------------
+   Verdigris — deep teal ink on warm stone, brass working accent. A private-
+   bank ledger rather than a coffee-shop menu.
+   -------------------------------------------------------------------------- */
+[data-look="verdigris"] {
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --display-weight: 500;
+  --display-tracking: -0.01em;
+
+  --bg: #EFEBE1;
+  --surface: #FAF7F0;
+  --surface-2: #E7E1D2;
+  --surface-sunken: #DED6C3;
+  --border: #D6CDB6;
+  --border-strong: #B8AC8B;
+
+  --text: #14312B;
+  --text-2: #43574F;
+  --text-3: #74847B;
+  --text-inverse: #FAF7F0;
+
+  --primary: #0F2E28;
+  --primary-hover: #17413A;
+  --on-primary: #FAF7F0;
+  --accent: #A6702E;
+  --accent-soft: #EEDFC1;
+  --on-accent: #2A1A05;
+  --focus: #A6702E;
+
+  --success: #2B6E4E; --success-soft: #DEEBDD;
+  --warning: #A6702E; --warning-soft: #EEDFC1;
+  --danger:  #A3402F; --danger-soft:  #F1DBD3;
+  --info:    #3E6E82; --info-soft:    #DBE7E7;
+
+  --chart-1: #0F2E28;
+  --chart-2: #A6702E;
+  --chart-3: #7C9187;
+  --chart-grid: #DED6C3;
+
+  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --shadow-1: 0 1px 2px rgba(20,49,43,.10), 0 0 0 1px rgba(20,49,43,.06);
+  --shadow-2: 0 6px 20px -6px rgba(20,49,43,.16), 0 0 0 1px rgba(20,49,43,.07);
+  --shadow-3: 0 28px 56px -18px rgba(20,49,43,.30), 0 0 0 1px rgba(20,49,43,.08);
+
+  --sidebar-bg: #0F2E28;
+  --sidebar-text: #F1EBDA;
+  --sidebar-text-2: #92A69C;
+  --sidebar-active: #17413A;
+  --sidebar-border: #1C4B42;
+  --hero-bg: linear-gradient(135deg, #0F2E28 0%, #1C4B42 100%);
+  --hero-text: #FAF7F0;
+  --hero-text-2: #C7D3CB;
+  --hero-accent: #D6A860;
+}
+@media (prefers-color-scheme: dark) {
+  [data-look="verdigris"]:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #0A1815; --surface: #0F211D; --surface-2: #142B25; --surface-sunken: #081310;
+    --border: #1E3A33; --border-strong: #2C4E46;
+    --text: #EDE7D8; --text-2: #A9B7AF; --text-3: #708078; --text-inverse: #0A1815;
+    --primary: #D6A860; --primary-hover: #E3BA79; --on-primary: #1F1404;
+    --accent: #D6A860; --accent-soft: #2A2312; --on-accent: #1F1404; --focus: #D6A860;
+    --success: #4E9A73; --success-soft: #10281F;
+    --warning: #D6A860; --warning-soft: #2A2312;
+    --danger:  #D97C69; --danger-soft:  #33191A;
+    --info:    #6FA3B0; --info-soft:    #142A2E;
+    --chart-1: #D6A860; --chart-2: #6FA3B0; --chart-3: #4C6259; --chart-grid: #16302A;
+    --sidebar-bg: #081310; --sidebar-text: #EDE7D8; --sidebar-text-2: #7E9086;
+    --sidebar-active: #142B25; --sidebar-border: #1A322B;
+    --hero-bg: linear-gradient(135deg, #081310 0%, #142B25 100%);
+    --hero-text: #F1EBDA; --hero-text-2: #B7C4BC; --hero-accent: #D6A860;
+  }
+}
+[data-look="verdigris"][data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0A1815; --surface: #0F211D; --surface-2: #142B25; --surface-sunken: #081310;
+  --border: #1E3A33; --border-strong: #2C4E46;
+  --text: #EDE7D8; --text-2: #A9B7AF; --text-3: #708078; --text-inverse: #0A1815;
+  --primary: #D6A860; --primary-hover: #E3BA79; --on-primary: #1F1404;
+  --accent: #D6A860; --accent-soft: #2A2312; --on-accent: #1F1404; --focus: #D6A860;
+  --success: #4E9A73; --success-soft: #10281F;
+  --warning: #D6A860; --warning-soft: #2A2312;
+  --danger:  #D97C69; --danger-soft:  #33191A;
+  --info:    #6FA3B0; --info-soft:    #142A2E;
+  --chart-1: #D6A860; --chart-2: #6FA3B0; --chart-3: #4C6259; --chart-grid: #16302A;
+  --sidebar-bg: #081310; --sidebar-text: #EDE7D8; --sidebar-text-2: #7E9086;
+  --sidebar-active: #142B25; --sidebar-border: #1A322B;
+  --hero-bg: linear-gradient(135deg, #081310 0%, #142B25 100%);
+  --hero-text: #F1EBDA; --hero-text-2: #B7C4BC; --hero-accent: #D6A860;
+}
+
+/* --------------------------------------------------------------------------
+   Nightshade — dark-first indigo, an ice-blue working accent. Built to be
+   seen at night by someone monitoring a system, not scrolled at noon.
+   -------------------------------------------------------------------------- */
+[data-look="nightshade"] {
+  color-scheme: dark;
+  --font-display: "Bricolage Grotesque", "Avenir Next", sans-serif;
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --display-weight: 600;
+  --display-tracking: -0.02em;
+
+  --bg: #0B0E17;
+  --surface: #121623;
+  --surface-2: #191F30;
+  --surface-sunken: #080A11;
+  --border: #232A3D;
+  --border-strong: #333C55;
+
+  --text: #EEF0F7;
+  --text-2: #A6ADC4;
+  --text-3: #6E7690;
+  --text-inverse: #0B0E17;
+
+  --primary: #7DD8E8;
+  --primary-hover: #97E2EF;
+  --on-primary: #05262C;
+  --accent: #7DD8E8;
+  --accent-soft: #142E33;
+  --on-accent: #05262C;
+  --focus: #7DD8E8;
+
+  --success: #5FD1A0; --success-soft: #10281F;
+  --warning: #E8B95E; --warning-soft: #2E2512;
+  --danger:  #F0798A; --danger-soft:  #33181E;
+  --info:    #7DA8F0; --info-soft:    #172440;
+
+  --chart-1: #EEF0F7;
+  --chart-2: #7DD8E8;
+  --chart-3: #4B5370;
+  --chart-grid: #1B2233;
+
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 18px;
+  --shadow-1: 0 1px 2px rgba(0,0,0,.5), 0 0 0 1px rgba(125,216,232,.06);
+  --shadow-2: 0 10px 28px -10px rgba(0,0,0,.65), 0 0 0 1px rgba(125,216,232,.08);
+  --shadow-3: 0 30px 70px -20px rgba(0,0,0,.8), 0 0 24px -4px rgba(125,216,232,.14);
+
+  --sidebar-bg: #080A11;
+  --sidebar-text: #EEF0F7;
+  --sidebar-text-2: #6E7690;
+  --sidebar-active: #191F30;
+  --sidebar-border: #1B2233;
+  --hero-bg: radial-gradient(120% 160% at 0% 0%, #17233A 0%, #0B0E17 60%);
+  --hero-text: #F3F6FC;
+  --hero-text-2: #9FA9C4;
+  --hero-accent: #7DD8E8;
+}
+/* Nightshade is dark-first by design: it keeps the same palette regardless
+   of OS scheme, and only [data-theme="light"] pulls it toward daylight. */
+[data-look="nightshade"][data-theme="light"] {
+  color-scheme: light;
+  --bg: #F3F5FA; --surface: #FFFFFF; --surface-2: #E9ECF4; --surface-sunken: #E0E4EE;
+  --border: #DBDFEA; --border-strong: #C0C6D8;
+  --text: #131A2C; --text-2: #4B5470; --text-3: #7A8298; --text-inverse: #FFFFFF;
+  --primary: #1B6E7E; --primary-hover: #14586A; --on-primary: #FFFFFF;
+  --accent: #1B6E7E; --accent-soft: #DCEEF1; --on-accent: #FFFFFF; --focus: #1B6E7E;
+  --success: #1E7A52; --success-soft: #E3F2EA;
+  --warning: #A86408; --warning-soft: #FBEEDB;
+  --danger:  #B4322E; --danger-soft:  #F9E4E2;
+  --info:    #2F5BB7; --info-soft:    #E4ECFA;
+  --chart-1: #131A2C; --chart-2: #1B6E7E; --chart-3: #8B93A8; --chart-grid: #E6E9F2;
+  --sidebar-bg: #131A2C; --sidebar-text: #EEF0F7; --sidebar-text-2: #8B93A8;
+  --sidebar-active: #232C45; --sidebar-border: #232C45;
+  --hero-bg: linear-gradient(135deg, #131A2C 0%, #1B3A52 100%);
+  --hero-text: #FFFFFF; --hero-text-2: #B7C1D6; --hero-accent: #4FD3E6;
+}
+
+/* --------------------------------------------------------------------------
+   Rosewood — warm charcoal with a dusty rose accent. Quiet, editorial,
+   a little more feminine-luxury than the others without turning precious.
+   -------------------------------------------------------------------------- */
+[data-look="rosewood"] {
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Karla", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, monospace;
+  --display-weight: 400;
+  --display-tracking: -0.005em;
+
+  --bg: #F6F1EF;
+  --surface: #FFFFFF;
+  --surface-2: #EFE6E3;
+  --surface-sunken: #E7DBD7;
+  --border: #E0D2CD;
+  --border-strong: #C7B2AB;
+
+  --text: #2B2220;
+  --text-2: #5E4F4B;
+  --text-3: #8A7975;
+  --text-inverse: #FFFFFF;
+
+  --primary: #2B2220;
+  --primary-hover: #3E322F;
+  --on-primary: #FFFFFF;
+  --accent: #A85A5F;
+  --accent-soft: #F1DCDC;
+  --on-accent: #FFFFFF;
+  --focus: #A85A5F;
+
+  --success: #3F7A5C; --success-soft: #E0EEE4;
+  --warning: #9C6B2E; --warning-soft: #F3E7D3;
+  --danger:  #A3423F; --danger-soft:  #F3DCDA;
+  --info:    #506690; --info-soft:    #E2E6EF;
+
+  --chart-1: #2B2220;
+  --chart-2: #A85A5F;
+  --chart-3: #A89490;
+  --chart-grid: #E7DBD7;
+
+  --radius-sm: 5px; --radius-md: 9px; --radius-lg: 14px;
+  --shadow-1: 0 1px 2px rgba(43,34,32,.08), 0 0 0 1px rgba(43,34,32,.05);
+  --shadow-2: 0 6px 20px -6px rgba(43,34,32,.14), 0 0 0 1px rgba(43,34,32,.06);
+  --shadow-3: 0 28px 56px -18px rgba(43,34,32,.26), 0 0 0 1px rgba(43,34,32,.07);
+
+  --sidebar-bg: #2B2220;
+  --sidebar-text: #F3EAE7;
+  --sidebar-text-2: #A6938E;
+  --sidebar-active: #3E322F;
+  --sidebar-border: #3E322F;
+  --hero-bg: linear-gradient(135deg, #2B2220 0%, #4A312F 100%);
+  --hero-text: #FBF3F0;
+  --hero-text-2: #D8C2BD;
+  --hero-accent: #E29AA0;
+}
+@media (prefers-color-scheme: dark) {
+  [data-look="rosewood"]:not([data-theme="light"]) {
+    color-scheme: dark;
+    --bg: #17110F; --surface: #201815; --surface-2: #291F1B; --surface-sunken: #120D0B;
+    --border: #382C27; --border-strong: #4C3B34;
+    --text: #F3E9E5; --text-2: #B8A49E; --text-3: #83716C; --text-inverse: #17110F;
+    --primary: #E29AA0; --primary-hover: #ECACB1; --on-primary: #2A1013;
+    --accent: #E29AA0; --accent-soft: #2E1A1C; --on-accent: #2A1013; --focus: #E29AA0;
+    --success: #6FB08F; --success-soft: #142A20;
+    --warning: #D6A860; --warning-soft: #2C2110;
+    --danger:  #E28884; --danger-soft:  #331A18;
+    --info:    #93A6CC; --info-soft:    #1E2534;
+    --chart-1: #F3E9E5; --chart-2: #E29AA0; --chart-3: #6B5A55; --chart-grid: #251C19;
+    --sidebar-bg: #120D0B; --sidebar-text: #F3E9E5; --sidebar-text-2: #8F7C77;
+    --sidebar-active: #291F1B; --sidebar-border: #2C221E;
+    --hero-bg: linear-gradient(135deg, #120D0B 0%, #2E1D1A 100%);
+    --hero-text: #F8EFEC; --hero-text-2: #CBB2AC; --hero-accent: #E29AA0;
+  }
+}
+[data-look="rosewood"][data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #17110F; --surface: #201815; --surface-2: #291F1B; --surface-sunken: #120D0B;
+  --border: #382C27; --border-strong: #4C3B34;
+  --text: #F3E9E5; --text-2: #B8A49E; --text-3: #83716C; --text-inverse: #17110F;
+  --primary: #E29AA0; --primary-hover: #ECACB1; --on-primary: #2A1013;
+  --accent: #E29AA0; --accent-soft: #2E1A1C; --on-accent: #2A1013; --focus: #E29AA0;
+  --success: #6FB08F; --success-soft: #142A20;
+  --warning: #D6A860; --warning-soft: #2C2110;
+  --danger:  #E28884; --danger-soft:  #331A18;
+  --info:    #93A6CC; --info-soft:    #1E2534;
+  --chart-1: #F3E9E5; --chart-2: #E29AA0; --chart-3: #6B5A55; --chart-grid: #251C19;
+  --sidebar-bg: #120D0B; --sidebar-text: #F3E9E5; --sidebar-text-2: #8F7C77;
+  --sidebar-active: #291F1B; --sidebar-border: #2C221E;
+  --hero-bg: linear-gradient(135deg, #120D0B 0%, #2E1D1A 100%);
+  --hero-text: #F8EFEC; --hero-text-2: #CBB2AC; --hero-accent: #E29AA0;
+}
